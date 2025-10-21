@@ -230,7 +230,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 via-yellow-50 to-orange-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 flex flex-col">
+    <main className="min-h-screen bg-gradient-to-br from-slate-50 via-slate-50 to-slate-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 flex flex-col">
       {/* Build: 2024-01-17-BSC-EXPLORER */}
       {/* Header */}
       <header className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-700/50 sticky top-0 z-50">
@@ -238,32 +238,12 @@ export default function Home() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <div className="flex items-center justify-center">
-                <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-lg">
-                  <svg 
-                    width="32" 
-                    height="32" 
-                    viewBox="0 0 32 32" 
-                    fill="none" 
-                    className="text-yellow-500"
-                  >
-                    {/* Official BNB Logo */}
-                    <path 
-                      d="M16 4L18.5 8.5L24 9L18.5 9.5L16 14L13.5 9.5L8 9L13.5 8.5L16 4Z" 
-                      fill="currentColor"
-                    />
-                    <path 
-                      d="M8 12L10.5 16.5L16 17L10.5 17.5L8 22L5.5 17.5L0 17L5.5 16.5L8 12Z" 
-                      fill="currentColor"
-                    />
-                    <path 
-                      d="M24 12L26.5 16.5L32 17L26.5 17.5L24 22L21.5 17.5L16 17L21.5 16.5L24 12Z" 
-                      fill="currentColor"
-                    />
-                    <path 
-                      d="M16 20L18.5 24.5L24 25L18.5 25.5L16 30L13.5 25.5L8 25L13.5 24.5L16 20Z" 
-                      fill="currentColor"
-                    />
-                  </svg>
+                <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-lg p-1">
+                  <img 
+                    src="/bnb-logo.png" 
+                    alt="BNB Logo" 
+                    className="w-8 h-8 object-contain"
+                  />
                 </div>
               </div>
               <div>
