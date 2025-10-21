@@ -2,7 +2,7 @@ import { ethers } from 'ethers';
 
 // BSCScan API configuration
 const BSCSCAN_API_URL = 'https://api.bscscan.com/api';
-const BSCSCAN_API_KEY = 'YourApiKeyToken'; // Get free API key from bscscan.com
+const BSCSCAN_API_KEY = process.env.BSCSCAN_API_KEY || 'YourApiKeyToken'; // Get free API key from bscscan.com
 
 // BSC Mainnet RPC endpoints (updated with working endpoints)
 const BSC_RPC_URLS = [
@@ -224,13 +224,15 @@ async function fetchFromBSCScan(endpoint: string, params: Record<string, string>
   });
   
   if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
+    console.warn(`BSCScan API HTTP error: ${response.status}`);
+    return null; // Return null instead of throwing
   }
   
   const data = await response.json();
   
   if (data.status !== '1') {
-    throw new Error(`BSCScan API error: ${data.message || 'Unknown error'}`);
+    console.warn(`BSCScan API error: ${data.message || 'Unknown error'}`);
+    return null; // Return null instead of throwing
   }
   
   return data.result;
@@ -244,12 +246,22 @@ export async function getNetworkStats() {
     const blockNumberHex = await fetchFromBSCScan('proxy', {
       action: 'eth_blockNumber'
     });
+    
+    if (!blockNumberHex) {
+      throw new Error('Failed to fetch block number from BSCScan');
+    }
+    
     const blockNumber = parseInt(blockNumberHex, 16);
     
     // Fetch gas price from BSCScan
     const gasPriceHex = await fetchFromBSCScan('proxy', {
       action: 'eth_gasPrice'
     });
+    
+    if (!gasPriceHex) {
+      throw new Error('Failed to fetch gas price from BSCScan');
+    }
+    
     const gasPriceWei = parseInt(gasPriceHex, 16);
     const gasPriceInGwei = parseFloat(ethers.formatUnits(gasPriceWei, 'gwei'));
     

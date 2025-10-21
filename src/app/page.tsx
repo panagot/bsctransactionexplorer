@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Search, Loader2, Moon, Sun, History, TrendingUp, Copy, Download, Share2, ExternalLink, XCircle } from 'lucide-react';
 import { fetchTransactionDetails, fetchTransactionReceipt, fetchRecentTransactions } from '@/lib/bscClient';
 import { parseBSCTransaction } from '@/lib/transactionParser';
@@ -9,6 +10,7 @@ import NetworkStats from '@/components/NetworkStats';
 import TransactionFlow from '@/components/TransactionFlow';
 import MEVDetection from '@/components/MEVDetection';
 import EnhancedTransactionDetails from '@/components/EnhancedTransactionDetails';
+import ErrorBoundary from '@/components/ErrorBoundary';
 
 export default function Home() {
   const [hash, setHash] = useState('');
@@ -230,7 +232,8 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 via-slate-50 to-slate-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 flex flex-col">
+    <ErrorBoundary>
+      <main className="min-h-screen bg-gradient-to-br from-slate-50 via-slate-50 to-slate-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 flex flex-col">
       {/* Build: 2024-01-17-BSC-EXPLORER */}
       {/* Header */}
       <header className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-700/50 sticky top-0 z-50">
@@ -239,10 +242,12 @@ export default function Home() {
             <div className="flex items-center gap-4">
               <div className="flex items-center justify-center">
                 <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-lg p-1">
-                  <img 
+                  <Image 
                     src="/bnb-logo.png" 
                     alt="BNB Logo" 
-                    className="w-8 h-8 object-contain"
+                    width={32}
+                    height={32}
+                    className="object-contain"
                   />
                 </div>
               </div>
@@ -618,6 +623,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
-    </main>
+      </main>
+    </ErrorBoundary>
   );
 }
