@@ -1,6 +1,6 @@
 {
   "name": "bsc-transaction-explorer",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "type": "module",
   "description": "An Easy to Read BSC Blockchain Explorer - Professional Transaction Analysis with DeFi Detection and Educational Content - Updated for Vercel deployment",
