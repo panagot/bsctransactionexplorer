@@ -31,7 +31,7 @@ const createProvider = () => {
 const provider = createProvider();
 
 // Test provider connection
-async function testProviderConnection(provider: ethers.JsonRpcProvider): Promise<boolean> {
+async function _testProviderConnection(provider: ethers.JsonRpcProvider): Promise<boolean> {
   try {
     const network = await provider.getNetwork();
     return Number(network.chainId) === 56; // BSC chain ID
@@ -274,8 +274,10 @@ export async function getNetworkStats() {
       
       let gasPriceInGwei = 3.5; // Default BSC gas price
       try {
-        const gasPrice = await provider.getGasPrice();
-        gasPriceInGwei = parseFloat(ethers.formatUnits(gasPrice, 'gwei'));
+        const feeData = await provider.getFeeData();
+        if (feeData.gasPrice) {
+          gasPriceInGwei = parseFloat(ethers.formatUnits(feeData.gasPrice, 'gwei'));
+        }
       } catch (gasError) {
         console.log('⚠️ Gas price not available from RPC, using default:', gasError.message);
       }

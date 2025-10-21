@@ -429,7 +429,7 @@ function analyzeRisk(transaction: BSCTransaction, receipt: BSCTransactionReceipt
 
 function analyzeNetworkImpact(transaction: BSCTransaction, receipt: BSCTransactionReceipt) {
   const gasUsed = parseInt(receipt.gasUsed);
-  const blockNumber = transaction.blockNumber;
+  const _blockNumber = transaction.blockNumber;
   
   // Estimate network impact
   let impactLevel = 'Minimal';

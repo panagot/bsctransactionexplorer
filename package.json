@@ -2,6 +2,7 @@
   "name": "bsc-transaction-explorer",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "description": "An Easy to Read BSC Blockchain Explorer - Professional Transaction Analysis with DeFi Detection and Educational Content",
   "scripts": {
     "dev": "next dev --turbopack",
