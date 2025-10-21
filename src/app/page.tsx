@@ -238,16 +238,29 @@ export default function Home() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <div className="flex items-center justify-center">
-                <div className="w-8 h-8 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-lg">
                   <svg 
-                    width="20" 
-                    height="20" 
-                    viewBox="0 0 24 24" 
+                    width="32" 
+                    height="32" 
+                    viewBox="0 0 32 32" 
                     fill="none" 
-                    className="text-white"
+                    className="text-yellow-500"
                   >
+                    {/* Official BNB Logo */}
                     <path 
-                      d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" 
+                      d="M16 4L18.5 8.5L24 9L18.5 9.5L16 14L13.5 9.5L8 9L13.5 8.5L16 4Z" 
+                      fill="currentColor"
+                    />
+                    <path 
+                      d="M8 12L10.5 16.5L16 17L10.5 17.5L8 22L5.5 17.5L0 17L5.5 16.5L8 12Z" 
+                      fill="currentColor"
+                    />
+                    <path 
+                      d="M24 12L26.5 16.5L32 17L26.5 17.5L24 22L21.5 17.5L16 17L21.5 16.5L24 12Z" 
+                      fill="currentColor"
+                    />
+                    <path 
+                      d="M16 20L18.5 24.5L24 25L18.5 25.5L16 30L13.5 25.5L8 25L13.5 24.5L16 20Z" 
                       fill="currentColor"
                     />
                   </svg>
