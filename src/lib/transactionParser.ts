@@ -349,7 +349,7 @@ function analyzeProtocol(transaction: BSCTransaction, receipt: BSCTransactionRec
   
   let protocolType = 'Unknown';
   let riskLevel = 'Low';
-  let features = [];
+  let features: string[] = [];
   
   if (protocol) {
     protocolType = protocol;
@@ -367,7 +367,7 @@ function analyzeProtocol(transaction: BSCTransaction, receipt: BSCTransactionRec
   }
   
   return {
-    protocol,
+    protocol: protocol || undefined,
     protocolType,
     riskLevel,
     features,
