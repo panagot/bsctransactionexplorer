@@ -279,7 +279,7 @@ export async function getNetworkStats() {
           gasPriceInGwei = parseFloat(ethers.formatUnits(feeData.gasPrice, 'gwei'));
         }
       } catch (gasError) {
-        console.log('⚠️ Gas price not available from RPC, using default:', gasError.message);
+        console.log('⚠️ Gas price not available from RPC, using default:', gasError instanceof Error ? gasError.message : String(gasError));
       }
       
       console.log('✅ BSC Network Stats from RPC:', { 
